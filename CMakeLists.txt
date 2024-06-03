@@ -10,6 +10,7 @@ if (${CMAKE_COMPILER_IS_GNUCC})
    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g3 -Wall -Werror")
 endif()
 
+ADD_SUBDIRECTORY(toolcase)
 ADD_SUBDIRECTORY(tests)
 ADD_SUBDIRECTORY(livecoding)
 ADD_SUBDIRECTORY(googletest)
