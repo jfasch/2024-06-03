@@ -6,7 +6,7 @@ ADD_EXECUTABLE(
   sensor-const-suite.cpp
   sensor-random-suite.cpp
 
-#  sensor-config-suite.cpp
+  sensor-config-suite.cpp
 )
 
 TARGET_LINK_LIBRARIES(
@@ -14,4 +14,9 @@ TARGET_LINK_LIBRARIES(
 
   toolcase
   gtest_main 
+)
+
+ADD_TEST(
+  NAME the-only-test-suite
+  COMMAND all-tests
 )
