@@ -6,6 +6,7 @@ ADD_EXECUTABLE(thread-easy thread-easy.cpp)
 ADD_EXECUTABLE(auto-ptr auto-ptr.cpp)
 ADD_EXECUTABLE(ptr-decay ptr-decay.cpp)
 ADD_EXECUTABLE(lambda lambda.cpp)
+ADD_EXECUTABLE(map map.cpp)
 
 ADD_SUBDIRECTORY(smart-pointers)
 
