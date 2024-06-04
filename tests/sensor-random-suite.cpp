@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <sensor-random.h>
 
-TEST(sensor_random, basic)
+TEST(sensor_random_suite, basic)
 {
     RandomSensor rs(36.4, 42.3);                       // <--- give measurements between lo and hi
 

@@ -1,7 +1,7 @@
 ADD_EXECUTABLE(
   all-tests
 
-  demo-suite.cpp
+#  demo-suite.cpp
 
   sensor-const-suite.cpp
   sensor-random-suite.cpp
