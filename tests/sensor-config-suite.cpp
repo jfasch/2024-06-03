@@ -8,8 +8,8 @@ TEST(sensor_config_suite, basic)
 {
     SensorConfig sensor_config;
 
-    sensor_config.add_sensor("links-oben", std::make_shared<ConstantSensor>(37.5));
-    sensor_config.add_sensor("rechts-unten", std::make_shared<RandomSensor>(-273.15, 100000.1));
+    sensor_config.add_sensor_or_die_if_exists("links-oben", std::make_shared<ConstantSensor>(37.5));
+    sensor_config.add_sensor_or_die_if_exists("rechts-unten", std::make_shared<RandomSensor>(-273.15, 100000.1));
 
     auto lo = sensor_config.get_sensor("links-oben");
 
@@ -35,7 +35,7 @@ TEST(sensor_config_suite, remove)
 {
     SensorConfig config;
 
-    config.add_sensor("links-oben", std::make_shared<ConstantSensor>(37.5));
+    config.add_sensor_or_die_if_exists("links-oben", std::make_shared<ConstantSensor>(37.5));
 
     auto s = config.get_sensor("links-oben");
     ASSERT_TRUE(s);
@@ -52,9 +52,9 @@ TEST(sensor_config_suite, size)
 {
     SensorConfig config;
     ASSERT_EQ(config.size(), 0);
-    config.add_sensor("links-oben", std::make_shared<ConstantSensor>(37.5));
+    config.add_sensor_or_die_if_exists("links-oben", std::make_shared<ConstantSensor>(37.5));
     ASSERT_EQ(config.size(), 1);
-    config.add_sensor("rechts-unten", std::make_shared<ConstantSensor>(666));
+    config.add_sensor_or_die_if_exists("rechts-unten", std::make_shared<ConstantSensor>(666));
     ASSERT_EQ(config.size(), 2);
 
     config.remove_sensor("rechts-unten");
@@ -63,4 +63,16 @@ TEST(sensor_config_suite, size)
     auto s = config.get_sensor("links-oben");
     ASSERT_TRUE(s);
     ASSERT_FLOAT_EQ(s->get_temperature(), 37.5);
+}
+
+TEST(sensor_config_suite, add_does_not_overwrite_existing_sensor)
+{
+    SensorConfig config;
+    config.add_sensor_or_die_if_exists("links-oben", std::make_shared<ConstantSensor>(37.5));
+
+    try {       
+        config.add_sensor_or_die_if_exists("links-oben", std::make_shared<ConstantSensor>(37.5));
+        FAIL();
+    }
+    catch (const std::runtime_error&) {}
 }
