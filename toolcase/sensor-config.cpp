@@ -1,7 +1,7 @@
 #include "sensor-config.h"
 
 
-void SensorConfig::add_sensor(std::string name, std::shared_ptr<Sensor> sensor)
+void SensorConfig::add_sensor(std::string name, const std::shared_ptr<Sensor>& sensor)
 {
     m_sensors[name] = sensor;
 }

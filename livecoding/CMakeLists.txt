@@ -10,3 +10,5 @@ ADD_EXECUTABLE(map map.cpp)
 
 ADD_SUBDIRECTORY(smart-pointers)
 
+ADD_SUBDIRECTORY(threads)
+

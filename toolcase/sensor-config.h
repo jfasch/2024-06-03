@@ -10,7 +10,7 @@
 class SensorConfig
 {
 public:
-    void add_sensor(std::string name, std::shared_ptr<Sensor> sensor);
+    void add_sensor(std::string name, const std::shared_ptr<Sensor>& sensor);
     std::shared_ptr<Sensor> get_sensor(std::string name);
 
 private:
