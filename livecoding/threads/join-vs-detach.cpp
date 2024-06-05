@@ -17,9 +17,10 @@ int main()
 
 //    t.detach();
     t.join();
+    std::cout << "thread terminated" << std::endl;
 
-    std::this_thread::sleep_for(2s);
-    std::cout << "main: thread terminated" << std::endl;
+    // std::this_thread::sleep_for(2s);
+    // std::cout << "main: thread terminated" << std::endl;
     
     return 0;
 }
