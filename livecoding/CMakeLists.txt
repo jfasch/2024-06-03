@@ -12,3 +12,4 @@ ADD_SUBDIRECTORY(smart-pointers)
 
 ADD_SUBDIRECTORY(threads)
 
+ADD_EXECUTABLE(timestamps timestamps.cpp)
