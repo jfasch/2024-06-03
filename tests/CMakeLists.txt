@@ -7,6 +7,8 @@ ADD_EXECUTABLE(
   sensor-random-suite.cpp
 
   sensor-config-suite.cpp
+
+  mt-queue-suite.cpp
 )
 TARGET_LINK_LIBRARIES(
   all-tests
