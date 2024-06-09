@@ -103,43 +103,42 @@ private:
 
 int main()
 {
-    Person p("Joerg", "Faschingbauer");
+    {
+        String s;
+        s = concatenate("aaa", "bbb"); // move assignment, if
+                                       // implemented by String
+        cout << "heraussen: " << (void*)s.c_str() << endl;
+    }
 
-    (void)p;
+    {
+        String s;
+        s = "abc";
+    }
 
-    // {
-    //     String s;
-    //     s = concatenate("aaa", "bbb"); // move assignment, if
-    //                                    // implemented by String
-    //     cout << "heraussen: " << (void*)s.c_str() << endl;
-    // }
+    // std::move
+    {
+        String source("source");
+        String dest;
+        dest = std::move(source);
 
-    // {
-    //     String s;
-    //     s = "abc";
-    // }
+        //cout << source.c_str() << endl;       // verboten, we std::move()'ed from it
+        cout << dest.c_str() << endl;
+    }
 
-    // // std::move
-    // {
-    //     String source("source");
-    //     String dest;
-    //     dest = std::move(source);
+    {
+        std::vector<String> strings;
+        strings.push_back("blah");
+    }
 
-    //     //cout << source.c_str() << endl;
-    //     cout << dest.c_str() << endl;
-    // }
+    {
+        std::vector<String> strings;
+        strings.emplace_back("blah");
+    }
 
-    // {
-    //     std::vector<String> strings;
-    //     strings.push_back("blah");
-    // }
-
-    // {
-    //     std::vector<String> strings;
-    //     strings.emplace_back("blah");
-    // }
-    
-
+    {
+        Person p("Joerg", "Faschingbauer");
+        (void)p;
+    }
 
     return 0;
 }
