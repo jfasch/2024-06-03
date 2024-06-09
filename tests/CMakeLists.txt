@@ -9,6 +9,11 @@ ADD_EXECUTABLE(
   sensor-config-suite.cpp
 
   mt-queue-suite.cpp
+
+  message-queue-suite.cpp
+  worker-suite.cpp
+
+  latch-suite.cpp
 )
 TARGET_LINK_LIBRARIES(
   all-tests

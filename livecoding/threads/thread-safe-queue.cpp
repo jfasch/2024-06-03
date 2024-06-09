@@ -28,6 +28,7 @@ public:
         int rv;
 
         std::unique_lock<std::mutex> guard(m_lock);
+
         m_not_empty.wait(guard, [this](){ return m_queue.size() > 0; });
 
         rv = m_queue[0];
@@ -52,21 +53,30 @@ int main()
 {
     Queue q(/*maxsize*/10);
 
-    std::thread producer([&q](){
+    std::thread producer1([&q](){
         int i=0;
         for (;;) {
             q.put(i++);
+            std::this_thread::sleep_for(0.2s);
+        }
+    });
+
+    std::thread producer2([&q](){
+        int i=1000;
+        for (;;) {
+            q.put(i++);
+            std::this_thread::sleep_for(1.3s);
         }
     });
 
     std::thread consumer([&q](){
         for (;;) {
             std::cout << q.get() << std::endl;
-            std::this_thread::sleep_for(0.2s);
         }
     });
 
-    producer.join();
+    producer1.join();
+    producer2.join();
     consumer.join();
 
     return 0;

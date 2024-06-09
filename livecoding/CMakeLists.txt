@@ -13,3 +13,6 @@ ADD_SUBDIRECTORY(smart-pointers)
 ADD_SUBDIRECTORY(threads)
 
 ADD_EXECUTABLE(timestamps timestamps.cpp)
+ADD_EXECUTABLE(lvalues-rvalues lvalues-rvalues.cpp)
+ADD_EXECUTABLE(raw-ptr raw-ptr.cpp)
+ADD_EXECUTABLE(string-move string-move.cpp)
